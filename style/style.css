@@ -1,0 +1,45 @@
+.search-bar {
+	margin: 20px;
+	text-align: center;
+}
+
+.search-bar input {
+	width: 75%;
+}
+
+.map-container {
+    height: 60%;
+    width: 60%;
+    position: relative;
+    min-height: 400px;
+    float: left;
+}
+
+.map-item img {
+	max-width: 64px;
+}
+
+.station-list-item {
+	cursor: pointer;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.station-list-item:hover {
+	background-color: #eee;
+}
+
+.station-list-item img {
+	width: 45px;
+	float: left;
+    margin-right: 20px;
+}
+
+.station-list {
+    float: left;
+    height: 60%;
+    min-height: 400px;
+    padding: 15px;
+    margin-left: 15px;
+    list-style: none;
+}

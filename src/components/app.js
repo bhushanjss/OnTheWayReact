@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from './search-bar';
 import MapContainer from './map-container';
-import StationList from './station-list';
+import StationList from '../containers/station-list';
 
 class App extends Component {
 
@@ -20,7 +20,7 @@ class App extends Component {
         	<div>
             	<SearchBar />
             	<MapContainer onStationUpdate={stations => this.getStations(stations)}/>
-                <StationList stations={this.state.stations}/>
+                <StationList/>
             </div>
 
         );

@@ -22,11 +22,30 @@ export class MapContainer extends Component {
 
 	     if (this.props && this.props.google) {
 	      // google is available
-	      const {google} = this.props;
-	      const maps = google.maps;
+	   	  const {google} = this.props;
 
-	      const mapRef = this;
-	      const node = ReactDOM.findDOMNode(mapRef);	      
+	      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+          	var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+
+		  
+	      const maps = google.maps;
+	      const mapRef = window;
+	      const node = ReactDOM.findDOMNode(mapRef);
+
+	      const center = new maps.LatLng(lat, lng);
+	      const mapConfig = Object.assign({}, {
+	        center: center,
+	        zoom: zoom
+	      })
+
+	      this.map = new maps.Map(node, mapConfig);
+	      this.searchMap(this.map, lat, lng);
+          }, function() {
+
+          });
+        } else {
 	      const center = new maps.LatLng(lat, lng);
 	      const mapConfig = Object.assign({}, {
 	        center: center,
@@ -36,6 +55,7 @@ export class MapContainer extends Component {
 	      this.searchMap(this.map, lat, lng);
 	    }
 	  }
+        }
 	searchMap(map, lat, lng){
 			const {google} = this.props;
 			var center = {lat: lat, lng: lng};
@@ -73,5 +93,5 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyATzErZCg6C5_h-ieqcUXJXvyOLkDQIEgk"
+  apiKey: "AIzaSyBRDhbLCUfuLOKTwPk_VY3rfYitYy4X6EE"
 })(MapContainer)
